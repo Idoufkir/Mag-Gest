@@ -1,0 +1,22 @@
+{
+  "name": "mag-gest",
+  "version": "1.0.0",
+  "description": "application web gestion des magasiniers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Idoufkir/Mag-Gest"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Idoufkir/Mag-Gest/issues"
+  },
+  "homepage": "https://github.com/Idoufkir/Mag-Gest#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
