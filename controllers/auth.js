@@ -1,12 +1,56 @@
 const mysql = require('mysql');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 
 const connection = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     database: process.env.DATABASE
 });
+
+
+exports.login = async (req, res) => {
+    
+    try {
+        const { email, password } = req.body;
+
+        if( !email || !password ) {
+            return res.status(400).render('login', {
+                message: 'Please Provide an Email & Password'
+            })
+        }
+        connection.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
+                console.log(results);
+                if( !results || !(await bcrypt.compare(password, results[0].password) ) ) { 
+                    res.status(401).render('login', {
+                        message: 'Email or password is incorrect.'
+                    })
+                } else {
+                    const id = results[0].id;
+
+                    const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+                        expiresIn: process.env.JWT_EXPIRES_IN
+                    });
+
+                    console.log("The token is: " + token);
+
+                    const cookieOption = {
+                        expires: new Date(
+                            Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
+                        ),
+                        httpOnly: true
+                    }
+
+                    res.cookie('jwt', token, cookieOption);
+                    res.status(200).redirect("/");
+                }
+            })
+        
+    } catch (error) {
+        console.error();
+    }
+    
+}
 
 
 exports.register = (req, res) => {
@@ -44,9 +88,10 @@ exports.register = (req, res) => {
             }
         })
     });
-
-    
-
-
-
 }
+
+exports.logout = async function(req, res) {
+
+    res.clearCookie('jwt');
+    res.status(200).redirect("/");
+};

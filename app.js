@@ -1,11 +1,11 @@
 const path = require('path');
 const express = require('express');
-const ejs = require('ejs');
 const hbs = require('handlebars');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const app = express();
 const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
 const port = process.env.PORT || 3000;
 
 dotenv.config({ path: './.env'});
@@ -28,6 +28,7 @@ const publicDirectory = path.join(__dirname, './public');
 app.use(express.static(publicDirectory));
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'hbs');
 app.set('views',path.join(__dirname,'views'));
