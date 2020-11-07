@@ -34,15 +34,18 @@ exports.login = async (req, res) => {
 
                     console.log("The token is: " + token);
 
+                    console.log("The ID is: " + id);
+
                     const cookieOption = {
                         expires: new Date(
                             Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
                         ),
                         httpOnly: true
-                    }
-
+                    };
+                    req.session.isLoggedIn = true;
                     res.cookie('jwt', token, cookieOption);
-                    res.status(200).redirect("/");
+                    res.status(200).redirect("/dashboard");
+                    
                 }
             })
         
@@ -91,7 +94,29 @@ exports.register = (req, res) => {
 }
 
 exports.logout = async function(req, res) {
-
     res.clearCookie('jwt');
-    res.status(200).redirect("/");
+    req.session.destroy( function(err) {
+        res.redirect("/")
+    });
+};
+
+exports.verifyToken = function(req, res, next) {
+    // get auth header value
+    // Format of token : authorization: Bearer <token>
+    const bearerHeader = req.headers['authorization']
+    
+    if (typeof bearerHeader !== "undefined") {
+        // split at the space
+        const bearer = bearerHeader.split(' ')
+        // get token from array
+        const token = bearer[1]
+        // set the token
+        req.token = token
+        // next middleware
+        next()
+    } else {
+        // Forbidden
+        res.sendStatus(403)
+    }
+
 };

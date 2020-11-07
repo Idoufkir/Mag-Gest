@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const app = express();
 const dotenv = require('dotenv');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const port = process.env.PORT || 3000;
 
@@ -24,14 +25,23 @@ connection.connect((error)=>{
      console.log('Database Connected!');
 });
 
-const publicDirectory = path.join(__dirname, './public');
-app.use(express.static(publicDirectory));
+app.set('view engine', 'hbs');
+app.set('views',path.join(__dirname,'views'));
 
+const publicDirectory = path.join(__dirname, './public');
+app.use(express.static(path.join(__dirname, 'public','css')));
+app.use(express.static(path.join(__dirname, 'public','img')));
+app.use(express.static(path.join(__dirname, 'public','lib')));
+app.use(express.static(publicDirectory));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.set('view engine', 'hbs');
-app.set('views',path.join(__dirname,'views'));
+app.use(session({
+    secret: 'secret-key',
+    resave: false,
+    saveUninitialized: false,
+}));
+
 
 
 // Define Routes
