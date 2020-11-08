@@ -2076,9 +2076,9 @@ body {
 
 .featured-area .single-feature {
   margin-top: 30px;
-  padding: 80px 50px;
-  border-radius: 3px;
-  border: 1px solid #eee;
+  padding: 10px 15px;
+  border-radius: 15px;
+  border: 1px solid rgb(181, 215, 247);
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;

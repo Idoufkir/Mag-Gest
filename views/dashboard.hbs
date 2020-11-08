@@ -40,7 +40,7 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="/add-produit">Ajouter un Magasinier</a></li>
-          <li><a class="logout" href="/logout">Logout</a></li>
+          <li><a class="logout1" href="/logout">LogOut</a></li>
         </ul>
 
       </div>
@@ -61,13 +61,13 @@
           <li class="sub-menu">
             <a class="active" href="javascript:;">
               <i class="fa fa-th"></i>
-              <span>Stock</span>
+              <span>Département <br> Magasin</span>
               </a>
-            <ul class="sub">
+            {{!-- <ul class="sub">
               <li><a href="/produits">Produits</a></li>
               <li><a href="/rayons">Rayons</a></li>
               <li><a href="/frs">Fournisseurs</a></li>
-            </ul>
+            </ul> --}}
           </li>
           </li>
         </ul>
@@ -100,12 +100,12 @@
                 </thead>
                 <tbody> {{#each rows}}
                   <tr class="gradeA">
-                    <td class="center hidden-phone">{{nom}}</td>
-                    <td class="center hidden-phone">{{prenom}}</td>
-                    <td class="center hidden-phone">{{spct}}</td>
-                    <td class="center hidden-phone">{{age}}</td>
-                    <td class="center hidden-phone">{{tele}}</td>
-                    <td class="center hidden-phone">{{salaire}} Dhs</td>
+                    <td class="center hidden-phone"><b>{{nom}}</b></td>
+                    <td class="center hidden-phone"><b>{{prenom}}</b></td>
+                    <td class="center hidden-phone"><b>{{spct}}</b></td>
+                    <td class="center hidden-phone"><b>{{age}} ans</b></td>
+                    <td class="center hidden-phone"><b>0{{tele}}</b></td>
+                    <td class="center hidden-phone"><b>{{salaire}} Dhs</b></td>
                     </td>
                     
                     
