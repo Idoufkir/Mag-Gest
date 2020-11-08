@@ -16,7 +16,9 @@ router.get('/register', (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
-	res.render("index");
+	req.session.destroy( function(err) {
+        res.redirect("/")
+    });
 });
 
 

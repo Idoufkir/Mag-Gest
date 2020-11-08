@@ -40,6 +40,7 @@
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
           <li><a class="logout" href="/add-produit">Ajouter un Magasinier</a></li>
+          <li><a class="logout" href="/logout">Logout</a></li>
         </ul>
 
       </div>
@@ -91,24 +92,20 @@
                   <tr>
                     <th class="center hidden-phone">Nom</th>
                     <th>Prénom</th>
-                    <th class="hidden-phone">Quantité</th>
-                    <th class="hidden-phone">Fournisseur</th>
-                    <th class="hidden-phone">Rayon</th>
-                    <th class="hidden-phone">Société</th>
-                    <th class="hidden-phone">Email</th>
-                    <th class="hidden-phone">Tel</th>
+                    <th class="hidden-phone">Fonction</th>
+                    <th class="hidden-phone">Age</th>
+                    <th class="hidden-phone">N° Téléphone</th>
+                    <th class="hidden-phone">Salaire</th>
                   </tr>
                 </thead>
                 <tbody> {{#each rows}}
                   <tr class="gradeA">
-                    <td><a href="/produits">{{nom}}</a></td>
+                    <td class="center hidden-phone">{{nom}}</td>
                     <td class="center hidden-phone">{{prenom}}</td>
-                    <td class="center hidden-phone"><%= row.quantite %> Unités</td>
-                    <td class="center hidden-phone"><a href="/frs"><%= row.nameF %></a></td>
-                    <td class="center hidden-phone"><a href="/rayons"><%= row.nameR %></a></td>
-                    <td class="center hidden-phone"><%= row.societe %></td>
-                    <td class="center hidden-phone"><%= row.email %></td>
-                    <td class="center hidden-phone"><%= row.tel %></td>
+                    <td class="center hidden-phone">{{spct}}</td>
+                    <td class="center hidden-phone">{{age}}</td>
+                    <td class="center hidden-phone">{{tele}}</td>
+                    <td class="center hidden-phone">{{salaire}} Dhs</td>
                     </td>
                     
                     
