@@ -13,25 +13,13 @@ dotenv.config({ path: './.env'});
 
 
 
-
-const connection = mysql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    database: process.env.DATABASE
-});
- 
-connection.connect((error)=>{
-    if(error) console.log(error);
-     console.log('Database Connected!');
-});
-
 app.set('view engine', 'hbs');
 app.set('views',path.join(__dirname,'views'));
 
 const publicDirectory = path.join(__dirname, './public');
-app.use(express.static(path.join(__dirname, 'public','css')));
-app.use(express.static(path.join(__dirname, 'public','img')));
-app.use(express.static(path.join(__dirname, 'public','lib')));
+app.use(express.static(path.join(__dirname, 'public', 'dashboard','css')));
+app.use(express.static(path.join(__dirname, 'public', 'dashboard','img')));
+app.use(express.static(path.join(__dirname, 'public', 'dashboard','lib')));
 app.use(express.static(publicDirectory));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -46,7 +34,9 @@ app.use(session({
 
 // Define Routes
 app.use('/', require('./routes/pages'));
+app.use('/', require('./routes/home'));
 app.use('/auth', require('./routes/auth'));
+app.use('/dashboard', require('./routes/dashboard'));
 
 
 

@@ -223,7 +223,7 @@ ul.top-menu > li > .logout {
 	border: 1px solid #64c3c2 !important;
 	padding: 5px 15px;
 	margin-right: 15px;
-	background: #4ECDC4;
+	background: #009EE2;
 	margin-top: 15px;
 }
 
@@ -366,7 +366,7 @@ ul.sidebar-menu li a{
 }
 
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
-    background: #4ECDC4;
+    background: #009EE2;
     color: #fff;
     display: block;
 
@@ -447,7 +447,7 @@ a.logo:hover, a.logo:focus {
 }
 
 a.logo span {
-    color: #4ECDC4;
+    color: #009EE2;
 }
 
 
@@ -1942,7 +1942,7 @@ ul li {
 }
 .dataTables_paginate.paging_bootstrap.pagination li:hover a, .dataTables_paginate.paging_bootstrap.pagination li.active a {
 	color: #fff;
-	background: #4ECDC4;
+	background: #009EE2;
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
