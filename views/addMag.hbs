@@ -57,17 +57,11 @@
           <p class="centered"><a href="/dashboard"><img src="/ui-sam.png" class="img-circle" width="80"></a></p>
           <h5 class="centered">Mag & Ges</h5>
           <li class="mt">
-
           <li class="sub-menu">
             <a class="active" href="javascript:;">
               <i class="fa fa-th"></i>
               <span>Département <br> Magasin</span>
               </a>
-            {{!-- <ul class="sub">
-              <li><a href="/produits">Produits</a></li>
-              <li><a href="/rayons">Rayons</a></li>
-              <li><a href="/frs">Fournisseurs</a></li>
-            </ul> --}}
           </li>
           </li>
         </ul>
@@ -81,43 +75,49 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper"><br>
-        <h3><i class="fa fa-angle-right">  </i> Département Magasin </h3><br>
-        
+                <h3><i class="fa  fa-plus"></i>  Ajouter un Magasinier</h3>
         <div class="row">
-          <!-- page start-->
-          <div class="content-panel">
-            <div class="adv-table">
-              <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
-                <thead>
-                  <tr>
-                    <th class="center hidden-phone">Nom</th>
-                    <th>Prénom</th>
-                    <th class="hidden-phone">Fonction</th>
-                    <th class="hidden-phone">Age</th>
-                    <th class="hidden-phone">N° Téléphone</th>
-                    <th class="hidden-phone">Salaire</th>
-                  </tr>
-                </thead>
-                <tbody> {{#each rows}}
-                  <tr class="gradeA">
-                    <td class="center hidden-phone"><b>{{nom}}</b></td>
-                    <td class="center hidden-phone"><b>{{prenom}}</b></td>
-                    <td class="center hidden-phone"><b>{{spct}}</b></td>
-                    <td class="center hidden-phone"><b>{{age}} ans</b></td>
-                    <td class="center hidden-phone"><b>0{{tele}}</b></td>
-                    <td class="center hidden-phone"><b>{{salaire}} Dhs</b></td>
-                    </td>
-                    
-                    
-                  </tr>
-                  {{/each}}
-                </tbody>
-              </table>
-            </div>
+          <div class="container">
+            <h1>{{title}}</h1>
+            <form action="/save-mags" method="POST">
+          
+              <input type="hidden" name="id_P">
+
+              <div class="form-group">
+                <label for="nameP">Nom :</label>
+                <input type="text" class="form-control"   name="nameP" required>
+              </div>
+              <div class="form-group">
+                <label for="quantite">Prénom :</label>
+                <input type="text" class="form-control"  name="quantite" required>
+              </div>
+              <div class="form-group">
+                <label># fonction :</label>
+                <select class="form-control" name="id_R">
+                  <% idR.forEach(function(row){ %>
+                   <option name="idR"><%= row.id_R %> - <%= row.nameR %></option>
+                     <% });%>
+               </select>
+              </div>
+              <div class="form-group">
+                <label for="categorie">Salaire :</label>
+                <input type="text" class="form-control"  name="categorie" required>
+              </div>
+              <div class="form-group">
+                <label for="prix">Age :</label>
+                <input type="text" class="form-control"  name="prix" required>
+              </div>
+              <div class="form-group">
+                <label for="prix">Tele :</label>
+                <input type="text" class="form-control"  name="prix" required>
+              </div>
+          
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
           </div>
-          <!-- page end-->
-        </div>
-        <!-- /row -->
+      <!-- /col-lg-12 -->
+    </div>
+    <!-- /row -->
       </section>
       <!-- /wrapper -->
     </section>
