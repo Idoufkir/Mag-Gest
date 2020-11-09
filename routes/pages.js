@@ -24,36 +24,26 @@ router.get('/logout', (req, res) => {
 
 
 
-router.get('/add-mgsn', authGuard.isAuth,(req, res) => {
-    let idM;
-    let idF;
-    let sql1 = "SELECT id_mgsn FROM magasinier";
-    let sql2 =  "SELECT id_spct,spct FROM specialite";
-    connection.query(sql1, (err, rows) => {
-  
-      idM = rows;
-        if(err) throw err;
-        connection.query(sql2, (err, rows) => {
-          idF = rows;
-            if(err) throw err;
-        res.render('addMag', {
-            title : 'Ajouter Un magasinier',
-            idM : idM,
-            idF : idF
-  
-        });
-        });
-          });
+router.get('/add-mgsn', authGuard.isAuth, (req, res) => {
+  let sql = "SELECT * FROM specialite";
+  connection.query(sql, (err, rows) => {
+      if(err) throw err;
+      res.render('addMag', {
+          title : 'Ajouter un Magasinier',
+          rows : rows
+      });
+
+  });
   });
 
-router.post('/save-mag',  authGuard.isAuth,(req, res) => {
-
-    let data = {id_mgsn: req.body.id_mgsn, nom: req.body.nom, prenom: req.body.prenom, salaire: req.body.salaire, age: req.body.age, tele: req.body.tele};
-    let sql = "INSERT INTO produit SET ?";
+router.post('/save-mag', (req, res) => {
+    let data = {nom: req.body.nom, prenom: req.body.prenom, salaire: req.body.salaire, age: req.body.age, tele: req.body.tele, id_spct: req.body.id_spct};
+    let sql = "INSERT INTO magasinier SET ?";
     connection.query(sql, data,(err, results) => {
       if(err) return err;
-      res.redirect('/produits');
+      res.redirect('/dashboard');
     });
 });
+
 
 module.exports = router;

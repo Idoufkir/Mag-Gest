@@ -39,7 +39,7 @@
       </div>
       <div class="top-menu">
         <ul class="nav pull-right top-menu">
-          <li><a class="logout" href="/add-mgsn">Ajouter un Magasinier</a></li>
+          <li><a class="logout" href="/dashboard">Dashboard</a></li>
           <li><a class="logout1" href="/logout">LogOut</a></li>
         </ul>
 
@@ -75,41 +75,41 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper"><br>
-                <h3><i class="fa  fa-plus"></i>  Ajouter un Magasinier</h3>
+                <h3><i class="fa  fa-plus"></i> >> Ajouter un Magasinier</h3>
         <div class="row">
           <div class="container">
             <h1>{{title}}</h1>
-            <form action="/save-mags" method="POST">
+            <form action="/save-mag" method="POST">
           
-              <input type="hidden" name="id_P">
+              <input type="hidden" name="id_mgsn">
 
               <div class="form-group">
-                <label for="nameP">Nom :</label>
-                <input type="text" class="form-control"   name="nameP" required>
+                <label for="nom">Nom :</label>
+                <input type="text" class="form-control"   name="nom" required>
               </div>
               <div class="form-group">
-                <label for="quantite">Prénom :</label>
-                <input type="text" class="form-control"  name="quantite" required>
+                <label for="prenom">Prénom :</label>
+                <input type="text" class="form-control"  name="prenom" required>
               </div>
               <div class="form-group">
-                <label># fonction :</label>
-                <select class="form-control" name="id_R">
-                  <% idR.forEach(function(row){ %>
-                   <option name="idR"><%= row.id_R %> - <%= row.nameR %></option>
-                     <% });%>
+                <label># Fonction :</label>
+                <select class="form-control" name="id_spct">
+                  {{#each rows}}
+                   <option name="id_spct">(Département {{this.id_spct}}) : {{this.spct}}</option>
+                     {{/each}}
                </select>
               </div>
               <div class="form-group">
-                <label for="categorie">Salaire :</label>
-                <input type="text" class="form-control"  name="categorie" required>
+                <label for="salaire">Salaire :</label>
+                <input type="text" class="form-control"  name="salaire" required>
               </div>
               <div class="form-group">
-                <label for="prix">Age :</label>
-                <input type="text" class="form-control"  name="prix" required>
+                <label for="age">Age :</label>
+                <input type="text" class="form-control"  name="age" required>
               </div>
               <div class="form-group">
-                <label for="prix">Tele :</label>
-                <input type="text" class="form-control"  name="prix" required>
+                <label for="tele">Tele :</label>
+                <input type="text" class="form-control"  name="tele" required>
               </div>
           
               <button type="submit" class="btn btn-primary">Submit</button>
@@ -124,21 +124,6 @@
     <!-- /MAIN CONTENT -->
     <!--main content end-->
     
-    <!--footer start-->
-    {{!-- <footer class="site-footer">
-      <div class="text-center">
-        <p>
-          2020 &copy; Copyrights <strong>Mag&Gest</strong>
-        </p>
-        <div class="credits">
-          Created with Idoufkir Mustafa, <a href="https://github.com/Idoufkir">YouCode Safi</a>
-        </div>
-        <a href="/" class="go-top">
-          <i class="fa fa-angle-up"></i>
-          </a>
-      </div>
-    </footer> --}}
-    <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
   <script src="/jquery/jquery.min.js"></script>
