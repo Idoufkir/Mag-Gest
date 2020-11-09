@@ -96,6 +96,7 @@
                     <th class="hidden-phone">Age</th>
                     <th class="hidden-phone">N° Téléphone</th>
                     <th class="hidden-phone">Salaire</th>
+                    <th class="hidden-phone">Edit</th>
                   </tr>
                 </thead>
                 <tbody> {{#each rows}}
@@ -107,7 +108,10 @@
                     <td class="center hidden-phone"><b>0{{tele}}</b></td>
                     <td class="center hidden-phone"><b>{{salaire}} Dhs</b></td>
                     </td>
-                    
+                    <td class="center hidden-phone">
+                      <a href="/edit/mag/{{id_mgsn}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <a href="/delete/mag/{{id_mgsn}}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
+                    </td>
                     
                   </tr>
                   {{/each}}

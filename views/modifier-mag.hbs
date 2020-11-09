@@ -75,41 +75,41 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper"><br>
-                <h3><i class="fa  fa-plus"></i> >> Ajouter un Magasinier</h3>
+                <h3><i class="fa  fa-plus"></i> >> Update un Magasinier</h3>
         <div class="row">
           <div class="container">
-            <h1>{{title}}</h1>
+            <h1>{{title}} >> Matricule ID: SGD-615{{row.id_mgsn}}</h1>
             <form action="/save-mag" method="POST">
           
-              <input type="hidden" name="id_mgsn" id="id_mgsn">
+              <input type="hidden" value="{{row.id_mgsn}}" name="id_mgsn" id="id_mgsn">
 
               <div class="form-group">
                 <label for="nom">Nom :</label>
-                <input type="text" class="form-control"   name="nom" id="nom" required>
+                <input type="text" class="form-control" value="{{row.nom}}" name="nom" id="nom" required>
               </div>
               <div class="form-group">
                 <label for="prenom">Prénom :</label>
-                <input type="text" class="form-control"  name="prenom" id="prenom" required>
+                <input type="text" class="form-control" value="{{row.prenom}}" name="prenom" id="prenom" required>
               </div>
               <div class="form-group">
                 <label># Fonction :</label>
                 <select class="form-control" name="id_spct" id="id_spct">
-                  {{#each rows}}
-                   <option name="id_spct" id="id_spct" value={{this.id_spct}}>(Département {{this.id_spct}}) : {{this.spct}}</option>
+                  {{#each idM}}
+                   <option name="id_spct" id="id_spct" value="{{id_spct}}">(Département {{id_spct}} ) : {{spct}}</option>
                      {{/each}}
                </select>
               </div>
               <div class="form-group">
                 <label for="salaire">Salaire :</label>
-                <input type="text" class="form-control"  name="salaire" id="salaire" required>
+                <input type="text" class="form-control" value="{{row.salaire}}" name="salaire" id="salaire" required>
               </div>
               <div class="form-group">
                 <label for="age">Age :</label>
-                <input type="text" class="form-control"  name="age" id="age" required>
+                <input type="text" class="form-control" value="{{row.age}}" name="age" id="age" required>
               </div>
               <div class="form-group">
                 <label for="tele">Tele :</label>
-                <input type="text" class="form-control"  name="tele" id="tele" required>
+                <input type="text" class="form-control" value="0{{row.tele}}" name="tele" id="tele" required>
               </div>
           
               <button type="submit" class="btn btn-primary">Submit</button>
