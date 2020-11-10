@@ -58,15 +58,24 @@ router.get('/delete/mag/:idM',(req, res) => {
 router.get('/edit/mag/:idM',(req, res) => {
 
   const idM = req.params.idM;
-  let sql = `SELECT * FROM  (magasinier FULL JOIN specialite) where id_mgsn = ${idM}`;
-  let query = connection.query(sql,(err, result) => {
-      if(err) throw err;
-      res.render('modifier-mag', {
-          title : 'Modification des données Mag',
-          row : result[0]
-      });
+  let idF;
+  let sql1 = `SELECT * FROM specialite`;
+  let sql = `SELECT * FROM  magasinier where id_mgsn = ${idM}`;
+  connection.query(sql, sql1, (err, rows) => {
+      idF = rows;
+        if(err) throw err;
+        connection.query(sql, (err, results) => {
+          idF = rows;
+            if(err) throw err;
+        res.render('modifier-mag', {
+            title : 'Modification des données Mag',
+            row : results[0],
+            idF : idF
+  
+        });
+        });
+          });
   });
-});
 
 
 
