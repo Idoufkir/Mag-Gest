@@ -78,5 +78,15 @@ router.get('/edit/mag/:idM',(req, res) => {
   });
 
 
+  router.post('/edit-mag',(req, res) => {
+
+    let idM = req.body.id_mgsn;
+    let sql = `UPDATE magasinier SET nom = '${req.body.nom}', prenom = '${req.body.prenom}', salaire = '${req.body.salaire}', age = '${req.body.age}', tele = '${req.body.tele}', id_spct = '${req.body.id_spct}' where id_mgsn = ${idM}`;
+    let query = connection.query(sql,(err, results) => {
+      if(err) throw err;
+      res.redirect('/dashboard');
+    });
+});
+
 
 module.exports = router;
