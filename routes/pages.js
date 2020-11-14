@@ -88,5 +88,19 @@ router.get('/edit/mag/:idM',(req, res) => {
     });
 });
 
+router.get('/ajtdep' ,authGuard.isAuth, (req, res) =>{
+  res.render('ajt-departement');
+});
+
+router.post('/ajt-depatrement', authGuard.isAuth, (req, res) =>{
+
+  let data = {spct: req.body.spct};
+    let sql = "INSERT INTO specialite SET ?";
+    connection.query(sql, data,(err, results) => {
+      if(err) return err;
+      res.redirect('/dashboard');
+    });
+})
+
 
 module.exports = router;
